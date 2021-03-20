@@ -1,0 +1,45 @@
+PROCEDURE read_array(n: INTEGER, VAR arr : ARRAY_OF INTEGER)
+VAR
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Read(arr[i]);
+    END_FOR
+END
+
+PROCEDURE insertion_sort(VAR arr : ARRAY_OF INTEGER)
+VAR
+    i,j,x : INTEGER;
+BEGIN
+    FOR i FROM 0 TO arr.length-1 STEP 1  DO
+        x := arr[i];
+        j := i;
+        WHILE (j>0 and arr[j-1]>x) DO
+            arr[j] := arr[j-1];
+            j := j-1;
+        END_WHILE
+        arr[j] := x;
+    END_FOR
+END
+
+PROCEDURE print_array(n: INTEGER, VAR arr : ARRAY_OF INTEGER)
+VAR
+    set_declarations
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Write(arr[i]);
+    END_FOR
+END
+
+ALGORITHM insertionSort
+VAR
+    arr : ARRAY_OF INTEGER[50];
+    n : INTEGER;
+BEGIN
+    Write("Enter the array elements to be sorted :");
+    read_array(n, arr);
+
+    insertion_sort(arr);
+
+    Write("The sorted array : ");
+    print_array(arr);
+END
